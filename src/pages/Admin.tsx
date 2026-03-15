@@ -725,9 +725,7 @@ export default function Admin() {
                 </tbody>
               </table>
             </div>
-          </div>
-
-          {/* Mobile Card View */}
+          </div>{/* Mobile Card View */}
           <div className="md:hidden space-y-4">
             {orders.length === 0 ? (
               <div className="glass-panel p-8 text-center text-gray-500 rounded-2xl border border-white/5">
@@ -735,13 +733,15 @@ export default function Admin() {
               </div>
             ) : (
               orders.map((order) => (
-               <div>
-  <p className="font-mono text-gold-400 text-sm">#{order.id}</p>
-  <p className="font-medium text-white mt-1">{order.customer_name}</p>
-  <p className="text-gray-500 text-xs">{order.customer_phone}</p>
-  <p className="text-gray-400 text-xs mt-1">{order.customer_address}</p>
-  <p className="text-gold-400/70 text-[10px] uppercase tracking-wider mt-0.5">{order.shipping_zone}</p>
-</div>
+                <div key={order.id} className="glass-panel p-5 rounded-2xl border border-white/5 space-y-4">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="font-mono text-gold-400 text-sm">#{order.id}</p>
+                      <p className="font-medium text-white mt-1">{order.customer_name}</p>
+                      <p className="text-gray-500 text-xs">{order.customer_phone}</p>
+                      <p className="text-gray-400 text-xs mt-1">{order.customer_address}</p>
+                      <p className="text-gold-400/70 text-[10px] uppercase tracking-wider mt-0.5">{order.shipping_zone}</p>
+                    </div>
                     <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-medium border
                       ${order.status === 'PENDING' ? 'bg-yellow-500/10 text-yellow-400 border-yellow-500/20' : 
                         order.status === 'SHIPPED' ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' :
@@ -809,6 +809,8 @@ export default function Admin() {
               ))
             )}
           </div>
+
+         
         </div>
       )}
 
