@@ -653,7 +653,8 @@ export default function Admin() {
   <p className="text-gold-400/70 text-[10px] uppercase tracking-wider mt-0.5">{order.shipping_zone}</p>
 </td>
                         <td className="px-6 py-4">
-                          <ExpandableItems items={order.items || []} />
+                          
+                          <ExpandableItems items={order.items || []} showPrice={true} />
                         </td>
                         <td className="px-6 py-4 text-gray-400">
                           {new Date(order.created_at).toLocaleDateString()}
