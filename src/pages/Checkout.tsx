@@ -113,7 +113,7 @@ export default function Checkout() {
           </div>
           <h1 className="text-3xl font-serif font-medium text-white">Order Confirmed!</h1>
           <p className="text-gray-400">
-            Thank you for your purchase. Your order ID is <span className="font-mono font-medium text-gold-400">#{orderId.slice(0, 8)}</span>.
+            Thank you for your purchase. Your order ID is <span className="font-mono font-medium text-gold-400">#{orderId}</span>.
             We will contact you shortly to confirm delivery.
           </p>
           <button
