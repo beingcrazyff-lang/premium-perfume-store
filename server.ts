@@ -1,6 +1,6 @@
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
-import db from './server/db';
+import db from './server/db.ts';
 import crypto from 'crypto';
 import path from 'path';
 import { fileURLToPath } from 'url';
