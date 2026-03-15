@@ -644,7 +644,8 @@ export default function Admin() {
                     orders.map((order) => (
                       <tr key={order.id} className="hover:bg-white/5 transition-colors">
                         
-                    <td className="px-6 py-4">
+              <td className="px-6 py-4 font-mono text-gold-400">#{order.id}</td>
+                    
   <p className="font-medium text-white">{order.customer_name}</p>
   <p className="text-gray-500 text-xs">{order.customer_phone}</p>
   <p className="text-gray-500 text-xs mt-1 line-clamp-2 max-w-[200px]" title={order.customer_address}>
