@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      (function() {
+        // Suppress benign Vite WebSocket connection errors
+        const suppressPatterns = [
+          '[vite] failed to connect to websocket',
+          'WebSocket closed without opened'
+        ];
+
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        console.error = function(...args) {
+          if (args[0] && typeof args[0] === 'string' && suppressPatterns.some(p => args[0].includes(p))) {
+            return;
+          }
+          originalError.apply(console, args);
+        };
+
+        console.warn = function(...args) {
+          if (args[0] && typeof args[0] === 'string' && suppressPatterns.some(p => args[0].includes(p))) {
+            return;
+          }
+          originalWarn.apply(console, args);
+        };
+
+        window.addEventListener('unhandledrejection', function(event) {
+          if (event.reason && (
+            (event.reason.message && suppressPatterns.some(p => event.reason.message.includes(p))) ||
+            (typeof event.reason === 'string' && suppressPatterns.some(p => event.reason.includes(p)))
+          )) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+          }
+        }, true);
+
+        window.addEventListener('error', function(event) {
+          if (event.message && suppressPatterns.some(p => event.message.includes(p))) {
+            event.stopImmediatePropagation();
+            event.preventDefault();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
