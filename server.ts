@@ -151,7 +151,7 @@ async function startServer() {
       const ordersWithItems = orders.map((order: any) => {
         try {
           const items = db.prepare(`
-            SELECT oi.*, p.name, p.size 
+            SELECT oi.*, p.name 
             FROM order_items oi 
             JOIN products p ON oi.product_id = p.id 
             WHERE oi.order_id = ?
