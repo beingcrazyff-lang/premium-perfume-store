@@ -321,7 +321,7 @@ export default function ProductDetails() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => {
-                const currentPrice = selectedSize === '6ml' ? product.price_6ml || 320 : selectedSize === '10ml' ? product.price_10ml || 540 : product.price_30ml || 729;
+                const currentPrice = selectedSize === '6ml' ? product.price_6ml || 320 : selectedSize === '15ml' ? product.price_15ml || 540 : product.price_30ml || 729;
                 addItem(product, selectedSize, currentPrice, engraving);
                 setEngraving(''); // Reset after adding
               }}
